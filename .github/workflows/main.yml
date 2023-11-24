@@ -1,0 +1,17 @@
+name: Temperature Converter
+
+on: [push]
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        os: [macos-latest, ubuntu-latest, windows-latest]
+
+    runs-on: ${{matrix.os}}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+      - run: python3 temperatureTest.py
